@@ -20,7 +20,7 @@ import { TodoFilterComponent } from './todo-filter.component';
     <strong>Nombre de todos : {{ todosLength() }}</strong>
     <hr />
     <ul class="flex flex-col gap-12">
-      @for(todo of todosList(); track todo.id ) {
+      @for(todo of filteredTodosList(); track todo.id ) {
       <app-todo (toggleTodo)="toggleTodo.emit($event)" [todo]="todo" />
       } @empty {
       <li>Il n'y a pas de todo pour l'instant</li>
