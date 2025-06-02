@@ -1,6 +1,6 @@
 import { Component, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Todo } from '../shared/interfaces';
+import { TodoI } from '../shared/interfaces';
 
 @Component({
   selector: 'app-todo-form',
@@ -21,9 +21,9 @@ import { Todo } from '../shared/interfaces';
     }
   `,
 })
-export class TodoFormComponent {
+export class TodoForm {
   todoName = '';
-  addTodo = output<Todo>();
+  addTodo = output<TodoI>();
 
   addTodoInput() {
     if (this.todoName) {

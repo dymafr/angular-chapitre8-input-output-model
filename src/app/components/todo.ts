@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { Todo } from '../shared/interfaces';
+import { TodoI } from '../shared/interfaces';
 
 @Component({
   selector: 'app-todo',
@@ -16,7 +16,7 @@ import { Todo } from '../shared/interfaces';
   },
   styles: ``,
 })
-export class TodoComponent {
-  todo = input.required<Todo>();
+export class Todo {
+  todo = input.required<TodoI>();
   toggleTodo = output<string>();
 }

@@ -1,11 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { TodoFormComponent } from './todo-form.component';
-import { TodosListComponent } from './todos-list.component';
-import { Todo } from '../shared/interfaces';
+import { TodoForm } from './todo-form';
+import { TodosList } from './todos-list';
+import { TodoI } from '../shared/interfaces';
 
 @Component({
   selector: 'app-todo-container',
-  imports: [TodoFormComponent, TodosListComponent],
+  imports: [TodoForm, TodosList],
   template: `
     <app-todo-form (addTodo)="addTodo($event)" />
     <app-todos-list
@@ -17,8 +17,8 @@ import { Todo } from '../shared/interfaces';
     :host { padding: 32px; }
   `,
 })
-export class TodoContainerComponent {
-  todosList = signal<Todo[]>([
+export class TodoContainer {
+  todosList = signal<TodoI[]>([
     {
       id: '1',
       name: 'Ranger ma chambre',
@@ -36,7 +36,7 @@ export class TodoContainerComponent {
     },
   ]);
 
-  addTodo(todo: Todo) {
+  addTodo(todo: TodoI) {
     this.todosList.update((todos) => [...todos, todo]);
   }
 

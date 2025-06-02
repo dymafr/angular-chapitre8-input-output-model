@@ -6,13 +6,13 @@ import {
   output,
   signal,
 } from '@angular/core';
-import { TodoComponent } from './todo.component';
-import { Todo } from '../shared/interfaces';
-import { TodoFilterComponent } from './todo-filter.component';
+import { Todo } from './todo';
+import { TodoI } from '../shared/interfaces';
+import { TodoFilter } from './todo-filter';
 
 @Component({
   selector: 'app-todos-list',
-  imports: [TodoComponent, TodoFilterComponent],
+  imports: [Todo, TodoFilter],
   template: `
     <hr />
     <app-todo-filter [filter]="filter()" (filterChange)="filter.set($event)" />
@@ -29,9 +29,9 @@ import { TodoFilterComponent } from './todo-filter.component';
   `,
   styles: `ul { margin-top: 12px }`,
 })
-export class TodosListComponent {
+export class TodosList {
   filter = signal<string>('');
-  todosList = input<Todo[]>([]);
+  todosList = input<TodoI[]>([]);
   todosLength = computed(() => this.todosList().length);
   filteredTodosList = computed(() =>
     this.todosList().filter((t) => t.name.toLowerCase().includes(this.filter()))
